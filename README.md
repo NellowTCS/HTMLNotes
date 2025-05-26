@@ -84,7 +84,7 @@ Note: TinyMDE and Font Awesome have their own licensing terms. TinyMDE is licens
 
 ## Acknowledgments
 
-- TinyMDE for providing a lightweight Markdown editor: [https://github.com/jefago/tiny-markdown-editor](https://github.com/nextapps-de/tinymde)
+- TinyMDE for providing a lightweight Markdown editor: [https://github.com/jefago/tiny-markdown-editor](https://github.com/jefago/tiny-markdown-editor)
 - Font Awesome for high-quality icons: [https://fontawesome.com/](https://fontawesome.com/)
 - Inspired by simple, user-friendly note-taking applications.
 - Built with vanilla HTML, CSS, and JavaScript for maximum compatibility.
