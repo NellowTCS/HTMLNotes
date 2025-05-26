@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTMLNotes</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <link rel="manifest" href="manifest.json">
+    
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -681,6 +685,7 @@
                 <h1>HTMLNotes</h1>
             </div>
             <div class="new-note-container">
+                <button class="btn" id="install-button" hidden>Install App</button>
                 <button class="btn add-note-btn" id="addNoteBtn" aria-label="Create a new note"
                     aria-disabled="false">New Note</button>
             </div>
@@ -738,6 +743,45 @@
         style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0);"></div>
     <div id="toastContainer" class="toast-container"></div>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          // Register the service worker
+          if ("serviceWorker" in navigator) {
+              navigator.serviceWorker.register("service-worker.js");
+          }
+  
+          let deferredPrompt;
+          const installButton = document.getElementById("install-button");
+  
+          // Listen for the install prompt
+          window.addEventListener("beforeinstallprompt", (e) => {
+              e.preventDefault();
+              deferredPrompt = e;
+              installButton.hidden = false;
+          });
+
+          // Handle install button click
+          installButton.addEventListener("click", async () => {
+              const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+  
+              if (isStandalone) {
+                  console.log("App is already installed");
+                  return;
+              }
+  
+              if (deferredPrompt) {
+                  deferredPrompt.prompt();
+                  const { outcome } = await deferredPrompt.userChoice;
+                  deferredPrompt = null;
+                  console.log(outcome === "accepted" ? "User accepted install prompt" : "User dismissed install prompt");
+              } else {
+                  if (window.matchMedia("(display-mode: browser)").matches) {
+                      window.location.assign("chrome://apps/");
+                  }
+              }
+          });
+        });
+    </script>
     <script>
         // --- IndexedDB Setup ---
         let db;
