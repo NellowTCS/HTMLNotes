@@ -8,7 +8,6 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
     <link rel="manifest" href="manifest.json">
-    
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -370,28 +369,320 @@
         .export-dropdown-content {
             display: none;
             position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
+            bottom: 100%;
+            left: 0;
+            background-color: #2a3a42;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            z-index: 1000;
+            margin-bottom: 5px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transform-origin: bottom center;
+            transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
         }
 
         .export-dropdown-content button {
+            width: 100%;
             padding: 12px 16px;
-            text-decoration: none;
-            display: block;
+            text-align: left;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .export-dropdown-content button:last-child {
+            border-bottom: none;
         }
 
         .export-dropdown-content button:hover {
-            background-color: #f1f1f1;
+            background-color: rgba(0, 123, 255, 0.2);
+            color: #fff;
         }
 
+        .export-dropdown-content button:active {
+            background-color: rgba(0, 123, 255, 0.3);
+        }
+
+        .export-dropdown-content button i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Show dropdown on hover */
         .export-dropdown:hover .export-dropdown-content {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            animation: dropdownFadeIn 0.2s ease-out;
         }
 
-        .export-dropdown:hover .export-btn {
-            background-color: #3e8e41;
+        /* Update the dropdown arrow when menu is open */
+        .export-dropdown:hover .export-btn span {
+            transform: rotate(180deg);
+        }
+
+        /* Smooth rotation for the dropdown arrow */
+        .export-btn span {
+            display: inline-block;
+            transition: transform 0.2s ease;
+            font-size: 0.7em;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        /* Animation for dropdown */
+        @keyframes dropdownFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .add-note-btn,
+        #addNoteBtn {
+            background: var(--accent-gradient);
+            border-color: transparent;
+            color: white;
+            min-width: 215px;
+            transition: all 0.2s ease;
+        }
+
+        .add-note-btn:disabled,
+        #addNoteBtn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: linear-gradient(45deg, rgba(0, 123, 255, 0.6), rgba(0, 198, 255, 0.6));
+            transform: none;
+        }
+
+        /* Add visual cue for disabled New Note button */
+        #addNoteBtn:disabled::after {
+            content: ' ⏳';
+            font-size: 0.8em;
+        }
+
+        .add-note-btn:not(:disabled):hover,
+        #addNoteBtn:not(:disabled):hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .notes-list {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            padding-bottom: 1rem;
+        }
+
+        .note-list-item {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin: 0.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .note-list-item.active {
+            border: 1px solid rgba(58, 123, 213, 0.7);
+            background: rgba(58, 123, 213, 0.1);
+            scroll-margin: 1rem;
+        }
+
+        .note-list-item .note-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            background: linear-gradient(45deg, #3a7bd5, #00d1b2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .note-list-item .note-preview {
+            font-size: 0.85rem;
+            color: #b0b0b0;
+            line-height: 1.4;
+            margin: 0.25rem 0;
+            display: -webkit-box;
+            line-clamp: 2;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+
+        .note-list-item .note-date {
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .note-list-item:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 123, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            background: var(--primary-bg);
+            color: var(--text-color);
+            margin: 8px 8px 8px 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .editor-area {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 1rem;
+        }
+
+        .editor-area input[type="text"] {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .editor-area input[type="text"]#noteTitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        #tinymde-editor {
+            flex: 1;
+            min-height: 300px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .TinyMDE {
+            display: flex;
+            flex-direction: column;
+            background: transparent !important;
+            border: none !important;
+            color: var(--text-color) !important;
+            font-family: inherit !important;
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+            flex-grow: 1;
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .TinyMDE .CodeMirror {
+            height: 100%;
+            min-height: 200px;
+        }
+
+        .TinyMDE::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .TinyMDE::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .TinyMDE::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        .TinyMDE::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .editor-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+
+        .delete-note-btn {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .delete-note-btn:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+        .import-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .import-container button {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .import-container button:hover {
+            background: rgba(0, 123, 255, 0.2);
+            border-color: var(--accent-color);
+            transform: translateY(-1px);
+        }
+
+        .import-container input[type="file"] {
+            display: none;
         }
 
         .empty-state {
@@ -749,10 +1040,10 @@
           if ("serviceWorker" in navigator) {
               navigator.serviceWorker.register("service-worker.js");
           }
-  
+
           let deferredPrompt;
           const installButton = document.getElementById("install-button");
-  
+
           // Listen for the install prompt
           window.addEventListener("beforeinstallprompt", (e) => {
               e.preventDefault();
@@ -763,12 +1054,12 @@
           // Handle install button click
           installButton.addEventListener("click", async () => {
               const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
-  
+
               if (isStandalone) {
                   console.log("App is already installed");
                   return;
               }
-  
+
               if (deferredPrompt) {
                   deferredPrompt.prompt();
                   const { outcome } = await deferredPrompt.userChoice;
