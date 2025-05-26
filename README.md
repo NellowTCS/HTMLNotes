@@ -1,26 +1,31 @@
 # HTMLNotes
 
-HTMLNotes is a lightweight, web-based note-taking application built with HTML, CSS, and JavaScript. It allows users to create, manage, and organize notes with a clean, intuitive interface. Features include a toggleable sidebar, note creation, export/import capabilities in JSON and Markdown formats, and note deletion.
+HTMLNotes is a lightweight, web-based note-taking application built with HTML, CSS, and JavaScript. It leverages TinyMDE for rich Markdown editing and Font Awesome for a polished, icon-driven interface. Users can create, manage, and organize notes with a clean, intuitive design. Features include a toggleable sidebar, note creation, export/import capabilities in JSON and Markdown formats, and note deletion.
 
 ## Features
 
 - **Create and Manage Notes**: Easily create new notes and view all or recent notes via the sidebar.
+- **Rich Markdown Editing**: Powered by TinyMDE for seamless Markdown support.
 - **Export Notes**: Export notes as JSON or Markdown for easy sharing or backup.
 - **Import Notes**: Import notes to restore or share content.
 - **Delete Notes**: Remove unwanted notes with a single click.
 - **Responsive Sidebar**: Toggle the sidebar for a distraction-free experience.
+- **Icon-Driven UI**: Enhanced with Font Awesome icons for intuitive navigation.
 - **Real-Time Saving**: Notes are saved automatically as you type.
 
-## Setup
-A live demo on GitHub Pages is available here: https://nellowtcs.github.io/HTMLNotes/
-Open the GitHub Pages in your browser or download the latest release for better offline usage
+## Demo
 
+A live demo is available on GitHub Pages: [https://nellowtcs.github.io/HTMLNotes/](https://nellowtcs.github.io/HTMLNotes/)
 
-## Installation if you want to modify the code
+Open the demo in your browser or download the latest release for better offline usage.
+
+## Installation
+
+To run or modify HTMLNotes locally, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/[YourUsername]/HTMLNotes.git
+   git clone https://github.com/NellowTCS/HTMLNotes.git
    ```
 
 2. **Navigate to the Project Directory**:
@@ -28,14 +33,18 @@ Open the GitHub Pages in your browser or download the latest release for better 
    cd HTMLNotes
    ```
 
-3. **Open the Application**:
-   Open `index.html` in a web browser to start using and modifying HTMLNotes. No additional setup or dependencies are required.
+3. **Include Dependencies**:
+   - **TinyMDE**: The Markdown editor is included via CDN in the `index.html` file. Ensure an internet connection for the CDN, or download the TinyMDE library locally from [https://github.com/nextapps-de/tinymde](https://github.com/nextapps-de/tinymde).
+   - **Font Awesome**: Icons are included via CDN. Ensure an internet connection, or download Font Awesome locally from [https://fontawesome.com/](https://fontawesome.com/).
+
+4. **Open the Application**:
+   Open `index.html` in a web browser to start using or modifying HTMLNotes. No additional setup is required if using CDNs.
 
 ## Usage
 
 1. **Creating a Note**:
    - Click the "New Note" button in the sidebar to start a new note.
-   - Type your content, and it will auto-save.
+   - Use the TinyMDE editor to write and format content in Markdown, with auto-saving enabled.
 
 2. **Managing Notes**:
    - Use the sidebar to view "All Notes" or "Recent" notes.
@@ -58,14 +67,18 @@ Contributions are welcome! Follow these steps to contribute:
 4. Push to the branch (`git push origin feature/YourFeature`).
 5. Open a Pull Request.
 
-Please ensure your code follows the project's coding standards and includes appropriate documentation.
+Please ensure your code follows the project's coding standards, respects TinyMDE and Font Awesome licensing, and includes appropriate documentation.
 
 ## License
 
-This project is licensed under the GNU GPL v3 License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
+
+Note: TinyMDE and Font Awesome have their own licensing terms. TinyMDE is licensed under the MIT License, and Font Awesome offers free and pro versions with different licenses. Ensure compliance when using or distributing these dependencies.
 
 ## Acknowledgments
 
+- TinyMDE for providing a lightweight Markdown editor: [https://github.com/jefago/tiny-markdown-editor](https://github.com/nextapps-de/tinymde)
+- Font Awesome for high-quality icons: [https://fontawesome.com/](https://fontawesome.com/)
 - Inspired by simple, user-friendly note-taking applications.
 - Built with vanilla HTML, CSS, and JavaScript for maximum compatibility.
 
