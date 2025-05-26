@@ -19,6 +19,13 @@ A live demo is available on GitHub Pages: [https://nellowtcs.github.io/HTMLNotes
 
 Open the demo in your browser or download the latest release for better offline usage.
 
+## Gallery
+<img width="1238" alt="Screenshot 2025-05-25 at 7 54 33 PM" src="https://github.com/user-attachments/assets/8e5fab02-c798-402f-bbf2-23da03980a6a" />
+<img width="1238" alt="Screenshot 2025-05-25 at 7 47 11 PM" src="https://github.com/user-attachments/assets/7a90a8b8-0260-432e-9b9b-305433bccfe8" />
+<img width="1238" alt="Screenshot 2025-05-25 at 7 47 02 PM" src="https://github.com/user-attachments/assets/81357ff2-6931-4d13-9f5f-1ada0cfa449b" />
+
+
+
 ## Installation
 
 To run or modify HTMLNotes locally, follow these steps:
