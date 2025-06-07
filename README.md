@@ -1,3 +1,15 @@
+</br>
+</br>
+</br>
+
+# HTMLNotes has a new home! 
+(Don't worry, it wasn't sold or anything)</br>
+https://github.com/HTMLToolkit/HTMLNotes
+
+</br>
+</br>
+</br>
+
 # HTMLNotes
 
 HTMLNotes is a lightweight, web-based note-taking application built with HTML, CSS, and JavaScript. It leverages TinyMDE for rich Markdown editing and Font Awesome for a polished, icon-driven interface. Users can create, manage, and organize notes with a clean, intuitive design. Features include a toggleable sidebar, note creation, export/import capabilities in JSON and Markdown formats, and note deletion.
